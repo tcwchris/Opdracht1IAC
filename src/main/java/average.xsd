@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://iac/average">
+    <xs:element name="numbers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="number1" type="xs:positiveInteger"/>
+                <xs:element name="number2" type="xs:positiveInteger"/>
+                <xs:element name="number3" type="xs:positiveInteger"/>
+                <xs:element name="number4" type="xs:positiveInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,70 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:req="http://iac/average"
+                  xmlns:rsp="http://iac/response"
+                  xmlns:flt="http://iac/error"
+                  xmlns="http://iac/Opdracht1IAC"
+                  targetNamespace="http://iac/Opdracht1IAC"
+>
+
+    <!-- De verschillende XSD types om fouten af te vangen binnen de service -->
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://iac/average"
+                        schemaLocation="average.xsd" />
+            <xsd:import namespace="http://iac/response"
+                        schemaLocation="average-resp.xsd" />
+            <xsd:import namespace="http://iac/error"
+                        schemaLocation="average-error.xsd" />
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- Alle berichten die gestuurd of teruggestuurd kunnen worden vanuit de applicatie -->
+    <wsdl:message name="average-request">
+        <wsdl:part name="parameters" element="req:numbers"/>
+    </wsdl:message>
+
+    <wsdl:message name="average-response">
+        <wsdl:part name="average-response" element="rsp:averageresp"/>
+    </wsdl:message>
+
+    <wsdl:message name="average-error">
+        <wsdl:part name="average-error" element="flt:averageerr"/>
+    </wsdl:message>
+
+    <!-- De operaties van de webservice -->
+    <wsdl:portType name="WS-Interface">
+        <wsdl:operation name="average">
+            <wsdl:input message="average-error"/>
+            <wsdl:output message="average-response"/>
+            <wsdl:fault name="ApplicatieFout" message="average-error"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- De implementaties van de operaties -->
+    <wsdl:binding name="WS-Binding" type="WS-Interface">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="average">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApplicatieFout">
+                <soap:fault name="ApplicatieFout" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- De endpoints van de service -->
+    <wsdl:service name="average.WebService">
+        <wsdl:port name="WS-Port" binding="WS-Binding">
+            <soap:address location="http://localhost:8081/webservice/average"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
