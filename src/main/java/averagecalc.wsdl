@@ -37,7 +37,7 @@
     <!-- De operaties van de webservice -->
     <wsdl:portType name="WS-Interface">
         <wsdl:operation name="average">
-            <wsdl:input message="average-error"/>
+            <wsdl:input message="average-request"/>
             <wsdl:output message="average-response"/>
             <wsdl:fault name="ApplicatieFout" message="average-error"/>
         </wsdl:operation>

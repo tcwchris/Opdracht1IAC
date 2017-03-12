@@ -37,7 +37,8 @@ public interface WSInterface {
     @WebMethod
     @WebResult(name = "averageresp", targetNamespace = "http://iac/response", partName = "average-response")
     public Averageresp average(
-        @WebParam(name = "averageerr", targetNamespace = "http://iac/error", partName = "average-error")
+
+            @WebParam(name = "averageerr", targetNamespace = "http://iac/error", partName = "average-error")
         Averageerr averageError)
         throws AverageError
     ;
