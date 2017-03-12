@@ -3,10 +3,10 @@
     <xs:element name="numbers">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="number1" type="xs:positiveInteger"/>
-                <xs:element name="number2" type="xs:positiveInteger"/>
-                <xs:element name="number3" type="xs:positiveInteger"/>
-                <xs:element name="number4" type="xs:positiveInteger"/>
+                <xs:element name="number1" type="xs:int"/>
+                <xs:element name="number2" type="xs:int"/>
+                <xs:element name="number3" type="xs:int"/>
+                <xs:element name="number4" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
