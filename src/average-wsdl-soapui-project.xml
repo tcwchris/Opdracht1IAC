@@ -1,0 +1,6 @@
+Test started at 2017-03-12 19:55:43.584
+TestCase finished with status [FINISHED], time taken = 68
+Step 1 [SOAP Request Test 1] OK: took 11 ms
+Step 2 [SOAP Request Test 2 Error] OK: took 37 ms
+Step 3 [SOAP Request Test 3 Empty] OK: took 12 ms
+Step 4 [SOAP Request Test 4 negative or null] OK: took 8 ms
