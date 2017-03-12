@@ -11,8 +11,7 @@ import javax.jws.WebService;
 /**
  * Created by Chris on 09-Mar-17.
  */
-@WebService
-@SchemaValidation
+@WebService(endpointInterface = "iac.opdracht1iac.WSInterface")
 public class AverageImp implements WSInterface {
 
     public Averageresp average(Numbers nmbrs) throws AverageError {
@@ -23,9 +22,10 @@ public class AverageImp implements WSInterface {
 
         try{
             if(nmbrs.getNumber1() <= 0 || nmbrs.getNumber2() <= 0 || nmbrs.getNumber3() <= 0 || nmbrs.getNumber4() <= 0){
+
                 throw new RuntimeException();
             }
-
+           
             calcAverage avg = new calcAverage(nmbrs.getNumber1(),nmbrs.getNumber2(), nmbrs.getNumber3(), nmbrs.getNumber4());
             rep.setResponse(avg.getAverge());
         }catch (RuntimeException e){
@@ -36,8 +36,6 @@ public class AverageImp implements WSInterface {
             AverageError melding = new AverageError("Error 1", err);
             throw melding;
         }
-
-
         return rep;
     }
 }
