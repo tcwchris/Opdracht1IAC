@@ -7,7 +7,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import iac.error.Averageerr;
+import iac.average.Numbers;
 import iac.response.Averageresp;
 
 
@@ -29,7 +29,7 @@ public interface WSInterface {
 
     /**
      * 
-     * @param averageError
+     * @param parameters
      * @return
      *     returns iac.response.Averageresp
      * @throws AverageError
@@ -37,9 +37,8 @@ public interface WSInterface {
     @WebMethod
     @WebResult(name = "averageresp", targetNamespace = "http://iac/response", partName = "average-response")
     public Averageresp average(
-
-            @WebParam(name = "averageerr", targetNamespace = "http://iac/error", partName = "average-error")
-        Averageerr averageError)
+        @WebParam(name = "numbers", targetNamespace = "http://iac/average", partName = "parameters")
+        Numbers parameters)
         throws AverageError
     ;
 
